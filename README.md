@@ -6,7 +6,7 @@
 
 # スケジュール
 
-## 1. React(WebApp, React) 🛠️ 編集中 🛠️
+## 1. React(WebApp, React)
 
 ### ■HTML, CSS, JavaScript
 
@@ -16,16 +16,24 @@ Browser 上の動作確認
 
 React ライブラリによる JS ベースの Frontend 開発
 
-## 2. React(CreateReactApp, Component) 🛠️ 編集中 🛠️
+## 2. React(CreateReactApp, Component)
 
 ### ■create-react-app
 
 React の PJ ベースを生成\
 Debug 方法
 
-### ■Component
+### ■JSX
 
-Class Component と Function Component\
+JavaScript Xml の利用
+
+### ■Props
+
+親 Component から子 Component へ値を渡す
+
+### ■Component Type
+
+Class Component と Function Component
 
 ## 3. React(React Hook, Lifecycle) 🛠️ 編集中 🛠️
 
