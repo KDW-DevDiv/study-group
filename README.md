@@ -35,16 +35,21 @@ JavaScript Xml の利用
 
 Class Component と Function Component
 
-## 3. React(React Hook, Lifecycle) 🛠️ 編集中 🛠️
+## 3. React(Lifecycle, Hooks)
 
-### ■React Hook
+### ■ 描画の流れ
 
-useState\
-useEffect
+JSX => \_jsx(,,,) => Virtual DOM => DOM update
 
 ### ■Lifecycle
 
-画面描画の流れ
+DOM にエレメントが追加される Mounting  
+DOM エレメントを更新する Updating  
+DOM からエレメントが消去される Unmounting
+
+### ■useState, useEffect
+
+Stateful Component, Side Effect
 
 ## 4. React(Practice) 🛠️ 編集中 🛠️
 

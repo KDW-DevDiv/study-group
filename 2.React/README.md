@@ -54,7 +54,7 @@ Class を利用して記述する方法と Function を利用して記述する 
 
 ### Function Component
 
-Pure JavaScript ファンクションなので、単純に Props(引数)を受け取り、return でエレメントを返す。直観的で分かりやすい。
+Pure JavaScript Functionn なので Props(引数)を受け取り、return でエレメントを返す。直観的で分かりやすい。
 
 ### Class Component
 
