@@ -49,10 +49,10 @@ html と JS を編集し、画面レンダリングをおこなっていくと�
 ・index.js  
 => React のレンダリングと html を紐づけている  
 ・index.html  
-=> 実際にレンダリングが行われる html ファイル
-・package.json
+=> 実際にレンダリングが行われる html ファイル  
+・package.json  
 => npm で更新・参照されるファイル。Javascript を用いた PJ ではほぼ必ず入っている。必要なライブラリや実行コマンドなど核となる情報を定義する  
-・webpack.config.js
+・webpack.config.js  
 => 関連ファイルをひとまとめ（バンドリング）してくれる Webpack が利用するコンフィグファイル。import、export を用いる PJ ではバンドリングは必須。
 
 <br/>

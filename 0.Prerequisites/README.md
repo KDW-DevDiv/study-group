@@ -16,7 +16,7 @@ https://git-scm.com/download/win\
 以下を CLI で実行し情報が返ってくれば OK です。\
 git --version
 
-## Node
+## Node(LTS をインストール)
 
 https://nodejs.org/en/
 
