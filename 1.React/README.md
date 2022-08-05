@@ -69,7 +69,7 @@ cd 1.React/result/without-react
 node server.js
 ```
 
-http://localhost:3000 にアクセス
+http://localhost:3001 にアクセス
 
 ## with-react
 
