@@ -1,6 +1,6 @@
 const DebugComponent = () => {
   const handleClick = () => {
-    document.alert('Click!');
+    alert('Click!');
   };
 
   return <button onClick={handleClick}>Click</button>;
