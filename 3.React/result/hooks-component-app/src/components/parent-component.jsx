@@ -6,7 +6,7 @@ const ParentComponent = () => {
 
   return (
     <div>
-      <h1>Parent Component : Counter {counter}</h1>
+      <h1>Parent : Counter {counter}</h1>
       <button
         onClick={() => {
           setCounter((prevState) => prevState + 1);
@@ -15,7 +15,7 @@ const ParentComponent = () => {
         Increment
       </button>
       <ChildComponent id={1} />
-      <ChildComponent />
+      <ChildComponent id={counter} />
     </div>
   );
 };

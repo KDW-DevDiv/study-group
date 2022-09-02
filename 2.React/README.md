@@ -56,7 +56,10 @@ npx create-react-app [Project Name]
 
 ```
 cd [Project name]
+
 yarn start
+or
+npm start
 ```
 
 http://localhost:3000 にアクセス
@@ -104,6 +107,8 @@ root.render(
 
 ```
 yarn start
+or
+npm start
 ```
 
 5.Debug
@@ -156,6 +161,8 @@ root.render(
 
 ```
 yarn start
+or
+npm start
 ```
 
 4.JS のロジックに UI が反応することを確認

@@ -3,14 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import ParentComponent from './components/parent-component';
-import PropsComponent from './components/props-component';
+import ParentComponent from './components/parent-component';
+import HelloComponent from './components/hello-component';
+import MountUnMountComponent from './components/mount-unmount-component';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <PropsComponent message="Hello World" />
-    {/* <ParentComponent /> */}
+    {/* <HelloComponent /> */}
+    {/* <MountUnMountComponent /> */}
+    <ParentComponent />
   </React.StrictMode>
 );
 
