@@ -16,6 +16,8 @@ Browser 上の動作確認
 
 React ライブラリによる JS ベースの Frontend 開発
 
+<br/>
+
 ## 2. React(CreateReactApp, Component)
 
 ### ■create-react-app
@@ -35,6 +37,8 @@ JavaScript Xml の利用
 
 Class Component と Function Component
 
+<br/>
+
 ## 3. React(Lifecycle, Hooks)
 
 ### ■ 描画の流れ
@@ -51,18 +55,21 @@ DOM からエレメントが消去される Unmounting
 
 Stateful Component, Side Effect
 
-## 4. React(Practice) 🛠️ 編集中 🛠️
+<br/>
+
+## 4. React(Practice)
 
 ### ■ 実践
 
-以下のコンポーネントを画面に表示する
-Checkbox\
-RadioButton\
-Clock(時間を現在進行形で表示)
+4 つの練習問題にチャレンジ
+
+<br/>
 
 ## 5. Typescript 🛠️ 編集中 🛠️
 
 ### ■ JS + 型
+
+<br/>
 
 ## 6. Nextjs(create-nextapp, Structure) 🛠️ 編集中 🛠️
 
@@ -75,6 +82,8 @@ Debug 方法
 
 各ファイルの役割
 
+<br/>
+
 ## 7. Nextjs(Prerendering) 🛠️ 編集中 🛠️
 
 ### ■ Prerendering
@@ -83,17 +92,23 @@ SSR、SSG、ISR
 
 ### ■ Client サイド、Server サイド
 
+<br/>
+
 ## 8. Nextjs(Practice) 🛠️ 編集中 🛠️
 
 ### ■ API コール
 
 Client API コール、Server が結果を返す、その結果を UI に反映
 
+<br/>
+
 ## 9. Nextjs(Practice) 🛠️ 編集中 🛠️
 
 ### ■ SSR
 
 /Error が Route に入ったときに 404 ページを表示
+
+<br/>
 
 ## 10. +Biz 🛠️ 編集中 🛠️
 
@@ -104,6 +119,8 @@ Client API コール、Server が結果を返す、その結果を UI に反映
 ### ■ Search ページ
 
 説明
+
+<br/>
 
 ## 11. +Biz 🛠️ 編集中 🛠️
 
