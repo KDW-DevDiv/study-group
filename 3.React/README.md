@@ -1,6 +1,4 @@
-# レンダリング(画面描画)
-
-React が Component をレンダリングしない限り、Browser の UI に情報は反映されない。つまり、画面に表示する情報を動的に変更する場合は、その変更を React が感知し、再レンダリングが行われる必要がある。
+# React 詳細
 
 <br/>
 
@@ -20,30 +18,35 @@ npx create-react-app [Project Name]
 
 <br/>
 
-## JSX コンポーネント->Browser UI へ
+## Component -> Browser UI へ
 
-1.Component
+1.Component(Coding)
 
 ```
 <h1 className="bg-white">Hello World</h1>
 ```
 
-2.JSX を Virtual DOM 作成用のオブジェクトに変換
+<br/>
+
+2.JSX を Virtual DOM 作成用のオブジェクトに変換(Build)
 
 ```
 _jsx('h1', { className: 'bg-white', children: 'Hello World' });
 ```
 
-3.Virtual DOM を生成し、DOM との差分を更新
+<br/>
+
+3.Virtual DOM を生成し、DOM との差分を更新(Runtime)
 
 ```
 render(
   {...reactObj}
 );
-※具体的なObject構造は記載しない
 ```
 
-4.Browser に UI が描画される
+<br/>
+
+4.Browser に UI が描画される(Runtime)
 
 <br/>
 
@@ -75,23 +78,24 @@ root.render(
 );
 ````
 
-生成した Component が呼び出され、最終的に React ライブラリの render()に入っていくことがコード上確認できる。
+生成した Component が呼び出され、最終的に React ライブラリの render()に到達することが確認できる。
 
 <br/>
 
-## いつレンダリングが行われているのか？
+## Lifecycle
 
-Component 単位で、以下の Lifecycle に基づいてレンダリングが行われている。
+Component 単位で以下のフェーズが存在する。  
+ここをイメージできると React Application が非常に作りやすくなる。
 
 1.Mounting
 
 -DOM に Component が追加されるとき。  
-例）画面ロードや画面遷移、Component を動的に表示・非表示を切り替えるとき。
+例）ページロード、Component を動的に表示・非表示を切り替えるとき。
 
 2.Unmounting
 
 -Component が DOM から除去されたとき。  
-例）画面クローズや画面遷移、Component を動的に表示・非表示を切り替えるとき。
+例）ページクローズ、Component を動的に表示・非表示を切り替えるとき。
 
 <br/>
 
@@ -164,13 +168,13 @@ Browser の DeveloperTool/Element タブで Element の状態が変わってい�
 
 <br/>
 
-## Hooks
+# React Hooks
 
-React は上記で説明した Lifecycle で動作するため、そこを利用して Application を作っていかなければならない。画面レンダリングを効率的に感覚的に行える半面、React のルールに従う必要があるということ。
+React Application を開発するために欠かせない Hooks という Function 群が存在する。Hooks の中でも特に重要な 2 つを紹介する。
 
 ## useState
 
-動的に UI に反映される値を変更したい場合は、"state"を保持する必要がある。以下のように宣言し、Component に State を紐づける。setState のみ、state への更新が可能。setState により Updating と感知され、再レンダリングが走る。
+動的に UI に反映される値を変更したい場合は、"state"を保持する必要がある。以下のように Component 内部で宣言し、State を紐づける。state の更新は setState のみ可能。setState により React が Updating と感知し、再レンダリングが走る。
 
 ```
 const [state, setState] = useState();
@@ -178,10 +182,47 @@ const [state, setState] = useState();
 
 👨🏽‍💻 ハンズオン 👨🏽‍💻
 
+ParentComponent が setState()により、UI 更新されていることを確認。  
+※ローカル変数では動作しないことも確認。
+
+<br/>
+
 ## useEffect
 
-画面ロード時に API コールをしたい、Mounting と Unmounting のタイミングのみに XX の処理を入れたいといった場合に主に利用する。厳密にいうと、レンダリングが完了した後に走る処理を設定する箇所になる。以下のように useEffect 関数を呼び、Component に Effect を紐づける。
+レンダリングが完了した後に、更に処理を入れ込みたい場合に利用する。例えば、画面ロード時に API コールをしたい、タイマーを設定したい場合など。以下のように useEffect Function を Component に設定し、Effect を紐づける。  
+※感覚的にわざわざ useEffect ではなく、return の前で API コールすればよいのではないかと思うかもしれないが、  
+レンダリングの一貫性が保たれず、UI がちらついたりする可能性があるので、useEffect が必要。
+
+また、以下に記載のように、[dependancies]を指定することで、XXX の値が変更されたときのみや、[]のみの指定で Component が Mounting されたときのみ動作させることができる。
 
 ```
-useEffect(()=>{ 処理 })
+useEffect(()=>{ 処理 },[dependencies])
 ```
+
+👨🏽‍💻 ハンズオン 👨🏽‍💻
+
+EffectComponent を作成。
+
+```
+ni ./src/components/effect-component.jsx
+```
+
+以下の Component から内容をコピー  
+pj-root/3.React/result/hook-component-app/src/components/effect-component.jsx
+
+作成した Component を Import する  
+work/[Project Name]/src/index.js を開き、Component を配置する
+
+````
+```省略```
+import EffectComponent from './components/effect-component';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <div>
+    <EffectComponent />
+  </div>
+);
+````
+
+useEffect の動作、特に dependencies の動きを Console ログで確認

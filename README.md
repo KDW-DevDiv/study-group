@@ -23,15 +23,15 @@ React ライブラリによる JS ベースの Frontend 開発
 React の PJ ベースを生成\
 Debug 方法
 
-### ■JSX
+### ■ JSX
 
 JavaScript Xml の利用
 
-### ■Props
+### ■ Props
 
 親 Component から子 Component へ値を渡す
 
-### ■Component Type
+### ■ Component Type
 
 Class Component と Function Component
 
@@ -41,7 +41,7 @@ Class Component と Function Component
 
 JSX => \_jsx(,,,) => Virtual DOM => DOM update
 
-### ■Lifecycle
+### ■ Lifecycle
 
 DOM にエレメントが追加される Mounting  
 DOM エレメントを更新する Updating  
