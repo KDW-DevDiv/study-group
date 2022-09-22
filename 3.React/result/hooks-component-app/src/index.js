@@ -6,9 +6,9 @@ import EffectComponent from './components/effect-component';
 import HelloComponent from './components/hello-component';
 import MountUnMountComponent from './components/mount-unmount-component';
 import ParentComponent from './components/parent-component';
-import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+// console.log(<HelloComponent />);
 root.render(
   <div>
     <HelloComponent />
@@ -17,8 +17,3 @@ root.render(
     <EffectComponent />
   </div>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
