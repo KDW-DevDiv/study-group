@@ -64,13 +64,15 @@ ni ./src/components/hello-component.jsx
 pj-root/3.React/result/hook-component-app/src/components/hello-component.jsx
 
 作成した Component を Import する  
-work/[Project Name]/src/index.js を開き、Component を配置する
+work/[Project Name]/src/index.js を開き、Component を配置する  
+また、Component を可視化したいので、 console.log()を配置する
 
 ````
 ```省略```
 import HelloComponent from './components/hello-component';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+console.log(<HelloComponent />)
 root.render(
   <div>
     <HelloComponent />
@@ -78,7 +80,7 @@ root.render(
 );
 ````
 
-生成した Component が呼び出され、最終的に React ライブラリの render()に到達することが確認できる。
+生成した Component が呼び出され、JS の Object に変換されていることが分かる。これを React が解釈し、Browser UI に表示している。
 
 <br/>
 
@@ -111,7 +113,8 @@ ni ./src/components/mount-unmount-component.jsx
 pj-root/3.React/result/hook-component-app/src/components/mount-unmount-component.jsx
 
 作成した Component を Import する  
-work/[Project Name]/src/index.js を開き、Component を配置する
+work/[Project Name]/src/index.js を開き、Component を配置する  
+※console.log(<HelloComponent />)は削除 or コメントアウトする
 
 ````
 ```省略```
@@ -125,7 +128,7 @@ root.render(
 );
 ````
 
-Browser の DeveloperTool/Element タブで Element の状態が変わっていることが確認できる。
+Browser の DeveloperTool/Element タブで Component の Mounting と Unmounting が確認できる。
 
 <br/>
 
@@ -164,7 +167,7 @@ root.render(
 );
 ````
 
-Browser の DeveloperTool/Element タブで Element の状態が変わっていることが確認できる。
+Browser の DeveloperTool/Element タブで Element が"state" と "props"の変化に応じて、更新されていることが分かる。
 
 <br/>
 
@@ -174,7 +177,7 @@ React Application を開発するために欠かせない Hooks という Functi
 
 ## useState
 
-動的に UI に反映される値を変更したい場合は、"state"を保持する必要がある。以下のように Component 内部で宣言し、State を紐づける。state の更新は setState のみ可能。setState により React が Updating と感知し、再レンダリングが走る。
+動的に UI に反映される値を変更したい場合は、"state"を保持する必要がある。以下のように Component 内部で宣言し、"state" を紐づける。"state" の更新は "setState" のみ可能。"setState" により React が Updating と感知し、再レンダリングが走る。
 
 ```
 const [state, setState] = useState();
@@ -182,32 +185,40 @@ const [state, setState] = useState();
 
 👨🏽‍💻 ハンズオン 👨🏽‍💻
 
-ParentComponent が setState()により、UI 更新されていることを確認。  
-※ローカル変数では動作しないことも確認。
+ParentComponent が "setState"により、UI 更新されていることを確認。  
+※ローカル変数を用意して、変更をかけても意味がない。なぜなら、React の Render 処理がキックされないため。
 
 <br/>
 
 ## useEffect
 
-レンダリングが完了した後に、更に処理を入れ込みたい場合に利用する。例えば、画面ロード時に API コールをしたい、タイマーを設定したい場合など。以下のように useEffect Function を Component に設定し、Effect を紐づける。  
-※感覚的にわざわざ useEffect ではなく、return の前で API コールすればよいのではないかと思うかもしれないが、  
-レンダリングの一貫性が保たれず、UI がちらついたりする可能性があるので、useEffect が必要。
+レンダリングが完了した後に、更に処理を入れ込みたい場合に利用する。例えば、画面ロード時に API コールをしたい、タイマーを設定したい、イベントを紐づけたい場合など。以下のように useEffect Function を Component に設定し、Effect を紐づける。  
+※感覚的にわざわざ useEffect ではなく、return の前で API コールすればよいのではないかと思うかもしれないが、レンダリングの一貫性が保たれず、UI がちらついたりする可能性があるので、useEffect が必要。
 
-また、以下に記載のように、[dependancies]を指定することで、XXX の値が変更されたときのみや、[]のみの指定で Component が Mounting されたときのみ動作させることができる。
+以下に記載のように、"[dependencies]"を指定することで、XXX の値が変更されたときのみや、[]のみの指定で Component が Mounting されたときのみ"effect 処理"を動作させることができる。また、return 内に記載されている"cleanup 処理"は、直前の"effect 処理"を打消したいときに利用され、例えば、"effect 処理"でイベントの動的な紐づけを行い、"cleanup 処理"でその紐づけ解除を行う場合。
 
 ```
-useEffect(()=>{ 処理 },[dependencies])
+useEffect(()=>{
+  // effect処理
+
+  return () => {
+    // cleanup処理
+    }
+  },[dependencies])
 ```
 
 👨🏽‍💻 ハンズオン 👨🏽‍💻
 
+<br/>
 EffectComponent を作成。
 
 ```
+ni ./src/components/effect-p-component.jsx
 ni ./src/components/effect-component.jsx
 ```
 
 以下の Component から内容をコピー  
+pj-root/3.React/result/hook-component-app/src/components/effect-p-component.jsx
 pj-root/3.React/result/hook-component-app/src/components/effect-component.jsx
 
 作成した Component を Import する  
@@ -215,14 +226,14 @@ work/[Project Name]/src/index.js を開き、Component を配置する
 
 ````
 ```省略```
-import EffectComponent from './components/effect-component';
+import EffectPComponent from './components/effect-p-component';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
-    <EffectComponent />
+    <EffectPComponent />
   </div>
 );
 ````
 
-useEffect の動作、特に dependencies の動きを Console ログで確認
+useEffect の処理順を Console のログで確認

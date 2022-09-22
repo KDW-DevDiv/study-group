@@ -4,16 +4,28 @@ const EffectComponent = () => {
   const [number, setNumber] = useState(0);
   const [value, setValue] = useState(0);
 
+  // Renderingの度に動く
   useEffect(() => {
-    console.log('useEffect');
+    console.log('A');
+    return () => {
+      console.log('A cleanup');
+    };
   });
 
+  // Mounting時に動く
   useEffect(() => {
-    console.log('useEffect []');
+    console.log('B []');
+    return () => {
+      console.log('B [] cleanup');
+    };
   }, []);
 
+  // numberの値が変わる度に動く
   useEffect(() => {
-    console.log('useEffect number', number);
+    console.log('C number', number);
+    return () => {
+      console.log('C number cleanup');
+    };
   }, [number]);
 
   return (
