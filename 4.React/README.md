@@ -1,5 +1,9 @@
 # 実践
 
+## 0. React PJ 生成
+
+4.React/work に PJ を作成する。
+
 ## 1. JSX と Props
 
 - 時間配分
@@ -16,6 +20,8 @@
 
 - ゴール
 
+  STUDY-GROUP/4.React/result/practice-app/src/components/jsx-props-component.jsx
+
 <br/>
 
 ## 2. useState と useEffect
@@ -30,6 +36,8 @@
   ボタンクリックで+1 ずつ増加するカウンター A とカウンター B を 表示する(それぞれ別の state を使用。)。さらに、2 つの useEffect を利用し、console にログを出力。ただし 1 つはレンダリングごとにログを出力し、もう一方は、上記で用意したカウンター A が増加する度にログを出力する。
 
 - ゴール
+
+  STUDY-GROUP/4.React/result/practice-app/src/components/state-effect-component.jsx
 
 <br/>
 
@@ -79,6 +87,10 @@
 
 <br/>
 
+- ゴール
+
+  STUDY-GROUP/4.React/result/practice-app/src/components/checkbox-group-component.jsx
+
 ## 4. デジタル時計を表示
 
 - 時間配分
@@ -97,6 +109,4 @@ Coding : 15 min
 
 - ゴール
 
-```
-
-```
+  STUDY-GROUP/4.React/result/practice-app/src/components/clock-component.jsx
