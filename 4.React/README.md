@@ -1,15 +1,14 @@
 # 実践
 
-## 0. React PJ 生成
+## 準備
 
 4.React/work に PJ を作成する。
 
+最終形は以下の PJ に作成済み。必ず、動作(npm start)を確認すること。
+
+STUDY-GROUP/4.React/result/practive-app
+
 ## 1. JSX と Props
-
-- 時間配分
-
-  Coding : 10 min  
-  解説 : 5 min
 
 - 要件
 
@@ -26,11 +25,6 @@
 
 ## 2. useState と useEffect
 
-- 時間配分
-
-  Coding : 10 min  
-  解説 : 5 min
-
 - 要件
 
   ボタンクリックで+1 ずつ増加するカウンター A とカウンター B を 表示する(それぞれ別の state を使用。)。さらに、2 つの useEffect を利用し、console にログを出力。ただし 1 つはレンダリングごとにログを出力し、もう一方は、上記で用意したカウンター A が増加する度にログを出力する。
@@ -43,47 +37,9 @@
 
 ## 3. チェックボックスグループ
 
-- 時間配分
-
-  Coding : 15 min  
-  解説 : 5 min
-
 - 要件
 
-  3 つのチェックボックスを表示し、その中で常に 1 つしかチェックできないようにする。
-
-  Component のテンプレート
-
-  ```
-  import { useState } from 'react';
-
-  const CheckboxGroupComponent = () => {
-    const [value, setValue] = useState();
-
-    const handleChange = (e) => {
-      ???
-    };
-
-    return (
-      <div>
-        <label>
-          check1
-          <input type="checkbox" checked={???} value="check1" onChange={handleChange} />
-        </label>
-        <label>
-          check2
-          <input type="checkbox" checked={???} value="check2" onChange={handleChange} />
-        </label>
-        <label>
-          check3
-          <input type="checkbox" checked={???} value="check3" onChange={handleChange} />
-        </label>
-      </div>
-    );
-  };
-
-  export default CheckboxGroupComponent;
-  ```
+  3 つのチェックボックスを表示し、その中で常に 1 つしかチェックできないようにする。また、Default 値(初期値)は 2 つ目のチェックボックスとする。
 
 <br/>
 
@@ -91,12 +47,9 @@
 
   STUDY-GROUP/4.React/result/practice-app/src/components/checkbox-group-component.jsx
 
+  <br/>
+
 ## 4. デジタル時計を表示
-
-- 時間配分
-
-Coding : 15 min
-解説 : 5 min
 
 - 要件
 

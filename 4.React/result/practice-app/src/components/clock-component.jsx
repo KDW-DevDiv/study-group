@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 
 const ClockComponent = () => {
   const [time, setTime] = useState(new Date());
-  console.log(time);
 
   useEffect(() => {
     setInterval(() => {
@@ -10,7 +9,7 @@ const ClockComponent = () => {
     }, 1000);
   }, []);
 
-  return <div>{time.toISOString()}</div>;
+  return <div>{time.toLocaleTimeString()}</div>;
 };
 
 export default ClockComponent;

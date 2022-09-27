@@ -10,9 +10,19 @@ import ClockComponent from './components/clock-component';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
+    <div>1. JSX と Props</div>
     <JsxPropsComponent message="Hello World" />
+    <br />
+    <br />
+    <div>2. useState と useEffect</div>
     <StateEffectComponent />
+    <br />
+    <br />
+    <div>3. チェックボックスグループ</div>
     <CheckboxGroupComponent />
+    <br />
+    <br />
+    <div>4. デジタル時計を表示</div>
     <ClockComponent />
   </div>
 );

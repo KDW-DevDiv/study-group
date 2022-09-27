@@ -1,11 +1,9 @@
 import { useState } from 'react';
 
 const CheckboxGroupComponent = () => {
-  const [value, setValue] = useState();
-  // let value2 = 'check1';
+  const [value, setValue] = useState('check2');
 
   const handleChange = (e) => {
-    // value2 = e.target.value;
     setValue(e.target.value);
   };
 
