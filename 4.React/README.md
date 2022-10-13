@@ -82,7 +82,7 @@ STUDY-GROUP/4.React/result/practice-app
 
 - 解決策
 
-  共通の親 Component に State を配置（useState を宣言）し、子 Component に state と setState を渡す。つまり、一元的に情報を管理し、子 Component はそれらを利用するだけにする。
+  共通の親 Component に State を配置（useState を宣言）し、子 Component に state と setState を渡す。つまり、一元的に情報を管理し、子 Component はそれらを利用するだけ。
 
 - Code
 
