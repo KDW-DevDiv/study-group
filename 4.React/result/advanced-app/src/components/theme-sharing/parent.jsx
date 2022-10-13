@@ -3,7 +3,7 @@ import Child from './child';
 import { useState } from 'react';
 
 const Parent = () => {
-  const [isBlue, setIsBlue] = useState('blue');
+  const [isBlue, setIsBlue] = useState(true);
 
   return (
     <>
