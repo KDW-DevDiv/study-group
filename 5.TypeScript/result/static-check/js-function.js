@@ -1,6 +1,6 @@
 export {};
 
-// ハンズオン 1
+// 1
 const first = () => {
   const message = 'TEST';
   message.toLowerCase();
@@ -9,7 +9,7 @@ const first = () => {
 
 first();
 
-// ハンズオン 2
+// 2
 const second = () => {
   const calculate = (arg1, arg2) => {
     return arg1 + arg2;

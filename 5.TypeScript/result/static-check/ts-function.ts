@@ -1,5 +1,6 @@
 export {};
 
+// 1
 const first = () => {
   const message = 'TEST';
   message.toLowerCase(); // スペルミスでもエラーになる
@@ -8,6 +9,7 @@ const first = () => {
 
 first();
 
+// 2
 const second = () => {
   const calculate = (arg1: number, arg2: number) => {
     return arg1 + arg2;

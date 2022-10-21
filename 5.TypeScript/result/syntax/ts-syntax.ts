@@ -1,3 +1,4 @@
+// Type Annotation(変数)
 const typeAnnotationOnVariables = () => {
   let message: string = 'Hello World';
 
@@ -17,6 +18,7 @@ const typeAnnotationOnVariables = () => {
   const jsObj2 = { id: 123, content: 'test' };
 };
 
+// Type Annotation(Function)
 const typeAnnotationOnFunction = () => {
   function greet(message: string): string {
     return message;
@@ -24,8 +26,9 @@ const typeAnnotationOnFunction = () => {
   greet('Hello World');
 };
 
+// Type Annotation(Object 型)
 const typeAnnotationOnObject = () => {
-  function printName(obj: { first: string; last?: string }) {
+  function printName({ first, last }: { first: string; last?: string }) {
     console.log(`My name is ${first} ${last}`);
   }
 
@@ -36,11 +39,19 @@ const typeAnnotationOnObject = () => {
   printName({ last: 'Tanaka' }); // Error
 };
 
+// Union Types
 const unionTypes = () => {
+  // number
+  let str: string = '2';
+  str = 2; // Error
+
+  // Union
   let numStr: number | string = '2';
   numStr = 2;
 };
 
+// Type Alias と Interface
+// Type Alias
 const typeDeclaretion = () => {
   type Location = {
     x: number;
@@ -58,6 +69,7 @@ const typeDeclaretion = () => {
   setPlace({ x: 4 }); // Error
 };
 
+// Interface
 const interfaceDeclaretion = () => {
   interface Location {
     x: number;
@@ -84,3 +96,5 @@ const literalTyps = () => {
   boundary = 1; // OK
   boundary = 2; //Error
 };
+
+export {};
