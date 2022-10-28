@@ -2,11 +2,11 @@
 
 TypeScript は、**型に関する文法を持った JavaScript** のこと。
 
-TypeScript により、コーディング時に型を確定させることができるため、Runtime エラーを防ぐだけでなく、メソッドの予測提案、プロパティ、メソッドの存在チェックなども可能となり、開発効率アップにもつながる。
+TypeScript の静的チェックにより、コーディング時に型を確定させることができるため、Runtime エラーを防ぐだけでなく、メソッドの予測提案、プロパティ、メソッドの存在チェックなども可能となり、開発効率アップにもつながる。
 
 TypeScript は Compile 機能もあり、TypeScript => JavaScript(Browser が理解できる状態) の変換を行う。
 
-拡張子は ts、JSX が存在する場合は tsx とする。+Biz、QS2 プロジェクトは TypeScript を導入している。
+拡張子は ts。JSX が存在する場合は tsx となる。+Biz、QS2 プロジェクトは TypeScript を導入している。
 
 <br/>
 
@@ -25,189 +25,199 @@ VSCode はビルトインで、TypeScript Compiler 以外の機能を持って�
 
   ":"の後に型を付ける。":"が出てきたら型に関する内容だと理解すればよい。
 
-```
-let message: string = "Hello World"
+  ```
+  let message: string = "Hello World"
 
-// ほとんどの場合、付けなくてもTypeScriptが推測してくれるので、無くてもよい。
-let message = "Hello World"
+  // ほとんどの場合、付けなくてもTypeScriptが推測してくれるので、無くてもよい。
+  let message = "Hello World"
 
-// 配列
-let numbers: number[] = [2,3,4]
+  // 配列
+  let numbers: number[] = [2,3,4]
 
-// 以下でもOK
-let numbers = [2,3,4]
+  // 以下でもOK
+  let numbers = [2,3,4]
 
-// Object型
-const jsObj:{id: number, content: string} = {id: 123, content: "test"}
+  // Object型
+  const jsObj:{id: number, content: string} = {id: 123, content: "test"}
 
-// 以下でもOK
-const jsObj = {id: 123, content: "test"}
+  // 以下でもOK
+  const jsObj = {id: 123, content: "test"}
 
-```
+  ```
 
-<br/>
+  <br/>
 
-👨🏽‍💻 ハンズオン 👨🏽‍💻
+  👨🏽‍💻 ハンズオン 👨🏽‍💻
 
-作業ファイルを作成
+  作業ファイルを作成
 
-```
-cd 5.TypeScript
-mkdir -p work/syntax
-ni ./work/syntax/ts-syntax.ts
-```
+  ```
+  cd 5.TypeScript
+  mkdir -p work/syntax
+  ni ./work/syntax/ts-syntax.ts
+  ```
 
-以下のファイルの 2、3 つ目の Function と同じ内容を入力
+  以下のファイルの Function 1 と同じ内容を入力
 
-STUDY-GROUP/5.TypeScript/reslt/syntax/ts-syntax.ts
+  STUDY-GROUP/5.TypeScript/reslt/syntax/ts-syntax.ts
 
-<br/>
+  <br/>
 
 - Type Annotation(Function)
 
   パラメータと戻り値の型を指定する。
 
-```
-function greet(message: string): string{
-  return message;
-}
+  ```
+  function greet(message: string): string{
+    return message;
+  }
 
-greet("Hello World");
-```
+  greet("Hello World");
+  ```
 
 - Type Annotation(Object 型)
 
   JavaScript には、Object 型という Key-Value を格納できる型がある。それを利用して名前付き引数を設定することもできる。"?"を与えると、Optional となる。
 
-```
-function printName({ first, last }: {first: string, last?: string}) {
-  console.log(`My name is ${first} ${last}`)
-}
+  ```
+  function printName({ first, last }: {first: string, last?: string}) {
+    console.log(`My name is ${first} ${last}`)
+  }
 
-// 呼び元
-printName({first: "Taro", last: "Tanaka"}) // OK
-printName() // Error
-printName({first: "Taro"}) // OK
-printName({last: "Tanaka"}) // Error
-```
+  // 呼び元
+  printName({first: "Taro", last: "Tanaka"}) // OK
+  printName() // Error
+  printName({first: "Taro"}) // OK
+  printName({last: "Tanaka"}) // Error
+  ```
 
-<br/>
+  <br/>
 
-👨🏽‍💻 ハンズオン 👨🏽‍💻
+  👨🏽‍💻 ハンズオン 👨🏽‍💻
 
-生成済みの ts-syntax.ts ファイルに、以下のファイルの 2、3 つ目の Function と同じ内容を入力
+  生成済みの ts-syntax.ts ファイルに、以下のファイルの Function 2、3 と同じ内容を入力
 
-STUDY-GROUP/5.TypeScript/reslt/syntax/ts-syntax.ts
+  STUDY-GROUP/5.TypeScript/reslt/syntax/ts-syntax.ts
 
-<br/>
+  <br/>
 
 - Union Types
 
-```
-// number
-let str: string = '2';
-str = 2; // Error
-// Union
-let numStr: number | string = '2';
-numStr = 2;
-```
+  ```
+  // number
+  let str: string = '2';
+  str = 2; // Error
+  // Union
+  let numStr: number | string = '2';
+  numStr = 2;
+  ```
 
-<br/>
+  <br/>
 
-👨🏽‍💻 ハンズオン 👨🏽‍💻
+  👨🏽‍💻 ハンズオン 👨🏽‍💻
 
-生成済みの ts-syntax.ts ファイルに、以下のファイルの 4 つ目の Function と同じ内容を入力
+  生成済みの ts-syntax.ts ファイルに、以下のファイルの Function 4 と同じ内容を入力
 
-STUDY-GROUP/5.TypeScript/reslt/syntax/ts-syntax.ts
+  STUDY-GROUP/5.TypeScript/reslt/syntax/ts-syntax.ts
 
-<br/>
+  <br/>
 
 - Type Alias と Interface
-  型の再利用性を高めるために、"type"と"interface"を宣言できる。どちらもほぼ効果は同じだが、interface は宣言後にも、field を追加できるが、type はできなという違いがある。
 
-type alias
+  型の再利用性を高めるために、"type"と"interface"を宣言できる。どちらもほぼ効果は同じだが、interface は宣言後にも、field を追加できるが、type はできないという違いがある。
 
-```
-type Location = {
-  x: number;
-  y: number;
-};
+  type alias
 
-const myLocation: Location = { x: 5, y: 8 };
-const yourLocation: Location = { x: 9, y: 4 };
-function setPlace(location: Location) {
-  // 処理
-}
+  ```
+  type Location = {
+    x: number;
+    y: number;
+  };
 
-setPlace({ x: 4, y: 9 }); // OK
-setPlace({ x: 4 }); // Error
-```
+  // Error
+  type Location = {
+    z?: number;
+  }
 
-interface
+  const myLocation: Location = { x: 5, y: 8 };
+  const yourLocation: Location = { x: 9, y: 4 };
+  function setPlace(location: Location) {
+    // 処理
+  }
 
-```
-interface Location {
-  x: number;
-  y: number;
-}
+  setPlace({ x: 4, y: 9 }); // OK
+  setPlace({ x: 4 }); // Error
+  ```
 
-const myLocation: Location = { x: 5, y: 8 };
-const yourLocation: Location = { x: 9, y: 4 };
-function setPlace(location: Location) {
-  // 処理
-}
+  interface
 
-setPlace({ x: 4, y: 9 }); // OK
-setPlace({ x: 4 }); // Error
-```
+  ```
+  interface Location {
+    x: number;
+    y: number;
+  }
 
-<br/>
+  interface Location {
+    z?: number;
+  }
 
-👨🏽‍💻 ハンズオン 👨🏽‍💻
+  const myLocation: Location = { x: 5, y: 8 };
+  const yourLocation: Location = { x: 9, y: 4, z: 12 };
+  function setPlace(location: Location) {
+    // 処理
+  }
 
-生成済みの ts-syntax.ts ファイルに、以下のファイルの 5、6 つ目の Function と同じ内容を入力
+  setPlace({ x: 4, y: 9 }); // OK
+  setPlace({ x: 4 }); // Error
+  ```
 
-STUDY-GROUP/5.TypeScript/reslt/syntax/ts-syntax.ts
+  <br/>
 
-<br/>
+  👨🏽‍💻 ハンズオン 👨🏽‍💻
+
+  生成済みの ts-syntax.ts ファイルに、以下のファイルの Function 5、6 と同じ内容を入力
+
+  STUDY-GROUP/5.TypeScript/reslt/syntax/ts-syntax.ts
+
+  <br/>
 
 - Enum
 
-```
-enum Setting {
-  inValid = 0,
-  valid = 1
-}
-```
+  ```
+  enum Setting {
+    inValid = 0,
+    valid = 1
+  }
+  ```
 
 - Literal Types
 
   文字列と数字を指定した型宣言も可能。
 
-```
-let trafficLight: 'blue' | 'red' | 'yellow';
-trafficLight = 'red'; // OK
-trafficLight = 'green'; // Error
+  ```
+  let trafficLight: 'blue' | 'red' | 'yellow';
+  trafficLight = 'red'; // OK
+  trafficLight = 'green'; // Error
 
-let boundary: 1 | 0 | -1;
-boundary = 1; // OK
-boundary = 2; //Error
-```
+  let boundary: 1 | 0 | -1;
+  boundary = 1; // OK
+  boundary = 2; //Error
+  ```
 
-<br/>
+  <br/>
 
-👨🏽‍💻 ハンズオン 👨🏽‍💻
+  👨🏽‍💻 ハンズオン 👨🏽‍💻
 
-生成済みの ts-syntax.ts ファイルに、以下のファイルの 7 つ目の Function と同じ内容を入力
+  生成済みの ts-syntax.ts ファイルに、以下のファイルの Function 7 と同じ内容を入力
 
-STUDY-GROUP/5.TypeScript/reslt/syntax/ts-syntax.ts
+  STUDY-GROUP/5.TypeScript/reslt/syntax/ts-syntax.ts
 
-<br/>
+  <br/>
 
 ## 静的チェック
 
-JS は動的な型定義で、Runtime で型が確定する。そのため、静的なチェックが難しく、潜在バグへの懸念が払拭しきれないという面がある。  
-(※ESLint などの静的チェックツールを細かくカスタマイズすれば不可能ではない。)
+JS は動的な型定義のため、Runtime で型が確定する。つまり静的なチェックが無く、潜在バグへの懸念が払拭しきれないという面がある。  
+(※ESLint やエディタ などの静的チェックツールを細かくカスタマイズすれば不可能ではないが。)
 
 例えば以下のコードは、message という変数の状態により振る舞いが確定するが、型定義が存在しない状態では、コーディング時にはエラーにならず、Runtime で初めてエラーが顕在化する。
 
@@ -229,7 +239,7 @@ message();
 
 <br/>
 
-仮に message に String 型が格納された場合、Function ではないので、Runtime 時に message()でエラーとなる。何度も言うが、JS のみでは、"コーディング"時にはエラーは検知できない。
+仮に message に String 型が格納された場合、Function ではないので、Runtime 時に message()でエラーとなる。何度も言うが、JS のみでは、**コーディング時にはエラーは検知できない**。
 
 ```
 const message = "Hello World!";
@@ -239,7 +249,7 @@ message.toLowerCase();
 message();
 ```
 
-TypeScript では、"コーディング"時にエラーが表示され、動作させずとも未然にエラーを防ぐことができる。
+TypeScript では、**コーディング時にエラーが表示**され、動作させずとも未然にエラーを防ぐことができる。
 
 <br/>
 
@@ -248,8 +258,7 @@ TypeScript では、"コーディング"時にエラーが表示され、動作�
 作業ファイルを作成
 
 ```
-cd 5.TypeScript
-mkdir -p work/static-check
+mkdir ./work/static-check
 ni ./work/syntax/js-function.js
 ni ./work/syntax/ts-function.ts
 ni ./work/syntax/package.json
@@ -266,7 +275,7 @@ STUDY-GROUP/5.TypeScript/reslt/static-check/
 
 TypeScript ファイルではエラーが明示的に表示されていることが分かる。
 
-JavaScript は Runtime でエラーが確定する。以下で確認してみる。
+JavaScript は Runtime でエラーが確定する。以下でエラーを確認。
 
 ```
 cd work/static-check
@@ -317,7 +326,6 @@ JavaScript は Runtime でエラーが確定する。以下で確認してみる
 
 ```
 // first();をコメントアウトしてから実行。
-cd work/static-check
 node js-function.js
 ```
 
@@ -334,9 +342,9 @@ TypeScript コンパイラを通し、型関連の文法は除去され、ピュ
 作業ファイルを作成
 
 ```
-cd 5.TypeScript
-mkdir -p work/compile
-ni ./work/compile/ts-compile.ts
+cd ../
+mkdir compile
+ni ./ts-compile.ts
 ```
 
 生成した ts-compile.ts に以下の内容をコピーする。
@@ -355,7 +363,7 @@ console.log(message);
 TypeScript Compile を実行。
 
 ```
-cd work/compile
+cd compile
 npx tsc ts-compile.ts
 ```
 
@@ -378,3 +386,27 @@ yarn create react-app [Project Name] --template typescript
 or
 npx create-react-app [Project Name] --template typescript
 ```
+
+<br/>
+
+# TypeScript の利点を最大限に活かす
+
+- any の利用を避ける
+
+  コーディング時に型を確定させ、未然にバグを防ぎ、効率の良いコーディングを実現する。再利用性が高い、型であれば interface や type を利用すればよい。
+
+- ?を多用しない
+
+  以下のように、存在しない Property に備えて、エラーを発生させずに逃げることができるが、抽象性が増し、コーディング効率や品質に影響するので、必要最低限の使用にする。
+
+  ```
+  let test; // any ※本来、この時点でany指定がアウトなのだが、例なのであえてanyを使う
+
+  // testに対して、色々な処理を行う
+
+  // testにproperty cが存在しなかった場合
+  console.log(test.c); // error
+  console.log(test?.c); // ?を付けると、undefinedが返されるだけでエラーにはならない
+  ```
+
+  また、よほどの汎用的な Function(Component 含む)でない限り、?を付けた optional なパラメーターは避ける。

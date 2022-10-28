@@ -1,3 +1,4 @@
+// 1
 // Type Annotation(変数)
 const typeAnnotationOnVariables = () => {
   let message: string = 'Hello World';
@@ -18,6 +19,7 @@ const typeAnnotationOnVariables = () => {
   const jsObj2 = { id: 123, content: 'test' };
 };
 
+// 2
 // Type Annotation(Function)
 const typeAnnotationOnFunction = () => {
   function greet(message: string): string {
@@ -26,6 +28,7 @@ const typeAnnotationOnFunction = () => {
   greet('Hello World');
 };
 
+// 3
 // Type Annotation(Object 型)
 const typeAnnotationOnObject = () => {
   function printName({ first, last }: { first: string; last?: string }) {
@@ -39,6 +42,7 @@ const typeAnnotationOnObject = () => {
   printName({ last: 'Tanaka' }); // Error
 };
 
+// 4
 // Union Types
 const unionTypes = () => {
   // number
@@ -51,11 +55,18 @@ const unionTypes = () => {
 };
 
 // Type Alias と Interface
+
+// 5
 // Type Alias
 const typeDeclaretion = () => {
   type Location = {
     x: number;
     y: number;
+  };
+
+  // Error
+  type Location = {
+    z?: number;
   };
 
   const myLocation: Location = { x: 5, y: 8 };
@@ -69,6 +80,7 @@ const typeDeclaretion = () => {
   setPlace({ x: 4 }); // Error
 };
 
+// 6
 // Interface
 const interfaceDeclaretion = () => {
   interface Location {
@@ -76,8 +88,12 @@ const interfaceDeclaretion = () => {
     y: number;
   }
 
+  interface Location {
+    z?: number;
+  }
+
   const myLocation: Location = { x: 5, y: 8 };
-  const yourLocation: Location = { x: 9, y: 4 };
+  const yourLocation: Location = { x: 9, y: 4, z: 12 };
 
   function setPlace(location: Location) {
     // 処理
@@ -87,6 +103,8 @@ const interfaceDeclaretion = () => {
   setPlace({ x: 4 }); // Error
 };
 
+// 7
+// Literal Types
 const literalTyps = () => {
   let trafficLight: 'blue' | 'red' | 'yellow';
   trafficLight = 'red'; // OK

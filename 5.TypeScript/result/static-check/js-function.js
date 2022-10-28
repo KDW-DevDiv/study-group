@@ -2,28 +2,25 @@ export {};
 
 // 1
 const first = () => {
-  const message = 'TEST';
-  message.toLowerCase();
-  message();
+  const message = 123;
+  message.toLowerCase(); // エラーではない
+  message(); // エラーではない
 };
 
 first();
 
 // 2
 const second = () => {
-  const calculate = (arg1, arg2) => {
-    return arg1 + arg2;
-  };
-
-  console.log(calculate(1, 2)); // 3
-  console.log(calculate(1, 'a')); // 1a
+  // Object型(key-value pair)
+  const obj = { height: 10, width: 20 };
+  console.log(obj.weight); // undefined -> エラーではない
 
   const convertToLowerCase = (message) => {
     return message.toLowerCase();
   };
 
   console.log(convertToLowerCase('UPPERCASE')); // uppercase
-  console.log(convertToLowerCase(123)); // TypeError
+  console.log(convertToLowerCase(123)); // エラーではない
 };
 
 second();
