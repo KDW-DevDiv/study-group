@@ -364,6 +364,11 @@ TypeScript Compile を実行。
 
 ```
 cd compile
+
+# TypeScript package インストール
+npm init -y
+npm install typescript -D
+
 npx tsc ts-compile.ts
 ```
 

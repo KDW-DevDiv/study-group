@@ -51,7 +51,7 @@ DOM にエレメントが追加される Mounting
 DOM エレメントを更新する Updating  
 DOM からエレメントが消去される Unmounting
 
-### ■useState, useEffect
+### ■ useState, useEffect
 
 Stateful Component, Side Effect
 
@@ -65,26 +65,41 @@ Stateful Component, Side Effect
 
 <br/>
 
-## 5. Typescript 🛠️ 編集中 🛠️
+## 5. Typescript
 
-### ■ JS + 型
+### ■ Syntax
+
+基本文法
+
+### ■ Static Check
+
+TypeScript 機能による型の静的チェック
+
+### ■ Compile
+
+TypeScript => JavaScript ファイルへ
 
 <br/>
 
-## 6. Nextjs(create-nextapp, Structure) 🛠️ 編集中 🛠️
+## 6. Next.js(create-nextapp, Structure) 🛠️ 編集中 🛠️
+
+### ■ Next.js Framework
 
 ### ■ create-nextapp
 
-PJ を生成\
-Debug 方法
+PJ を生成と Debug 方法
 
-### ■ Structure
+### ■ ページ
 
-各ファイルの役割
+Routing と Prerendering
+
+### ■ API Route
+
+Frontend API
 
 <br/>
 
-## 7. Nextjs(Prerendering) 🛠️ 編集中 🛠️
+## 7. Next.js(Prerendering) 🛠️ 編集中 🛠️
 
 ### ■ Prerendering
 
@@ -94,7 +109,7 @@ SSR、SSG、ISR
 
 <br/>
 
-## 8. Nextjs(Practice) 🛠️ 編集中 🛠️
+## 8. Next.js(Practice) 🛠️ 編集中 🛠️
 
 ### ■ API コール
 
@@ -102,7 +117,7 @@ Client API コール、Server が結果を返す、その結果を UI に反映
 
 <br/>
 
-## 9. Nextjs(Practice) 🛠️ 編集中 🛠️
+## 9. Next.js(Practice) 🛠️ 編集中 🛠️
 
 ### ■ SSR
 

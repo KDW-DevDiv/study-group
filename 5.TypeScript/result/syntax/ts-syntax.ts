@@ -107,6 +107,7 @@ const interfaceDeclaretion = () => {
 // Literal Types
 const literalTyps = () => {
   let trafficLight: 'blue' | 'red' | 'yellow';
+  console.log(trafficLight);
   trafficLight = 'red'; // OK
   trafficLight = 'green'; // Error
 
