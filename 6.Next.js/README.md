@@ -1,6 +1,6 @@
 # Next.js
 
-**React のフレームワーク**。Web Application に求められる様々な要件が開発しやすく、パフォーマンスに優れている。ページ生成がサーバーサイドで行われるのが特徴。
+**React のフレームワーク**。Web Application に求められる様々な要件が開発しやすく、パフォーマンスに優れている。ページ生成がサーバーサイドで行われるのが特徴、いわゆるサーバーサイドレンダリング。
 
 React はライブラリのため、製品版として運用していくには、様々な設定・追加ライブラリが必要。Next.js がその部分をカバー・改良している。もちろん、Component の書き方等は、これまで学んできた React と同様。
 
@@ -56,6 +56,19 @@ pages フォルダ配下に格納した Component(js、jsx、ts、tsx)名に準�
 <br/>
 
 👨🏽‍💻 ハンズオン 👨🏽‍💻
+
+これ以降のハンズオンで console ログを確認するため、React Strict Mode をオフにする
+
+next.config.json に以下をコピー
+
+```
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  swcMinify: true,
+};
+
+module.exports = nextConfig;
+```
 
 アプリケーションを起動
 
@@ -240,13 +253,122 @@ second.tsx というログが Browser の Console と VSCode のターミナル�
 
 ## Api Route
 
+pages フォルダ配下に Web API を簡単に生成することができ、これらはサーバーサイドに配置される。
+
+<br/>
+
+👨🏽‍💻 ハンズオン 👨🏽‍💻
+
+サンプル生成済みの/api/hello をコールしてみる
+
+index.tsx に Fetch 処理を追加
+
+```
+import Link from 'next/link';
+
+export default function Home() {
+  // console.log('index.tsx');
+
+  const handleClickHello = async () => {
+    const res = await fetch('api/hello');
+    const { name } = await res.json();
+    console.log(name);
+  };
+
+  return (
+    <div>
+      <div>Hello Next App</div>
+      <Link href="/second">次のページ</Link>
+      <div>
+        <button onClick={handleClickHello}>Fetch Hello</button>
+      </div>
+    </div>
+  );
+}
+```
+
+Fetch Hello をクリックし、ログを確認
+
+pages/api/my-api.ts を生成
+
+```
+import { NextApiRequest, NextApiResponse } from 'next';
+
+type Data = {
+  message: string;
+};
+
+const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+  if (req.method === 'POST') {
+    const body = JSON.parse(req.body);
+    res.status(200).json({ message: body.name });
+  } else {
+    res.status(500).json({ message: `${req.method}はハンドルされません。` });
+  }
+};
+
+export default handler;
+```
+
+index.tsx から生成した API をコール
+
+```
+import Link from 'next/link';
+
+export default function Home() {
+  // console.log('index.tsx');
+
+  const handleClickHello = async () => {
+    const res = await fetch('api/hello');
+    const { name } = await res.json();
+    console.log(name);
+  };
+
+  const handleClickMyApi = async () => {
+    const res = await fetch('api/my-api', { method: 'POST', body: JSON.stringify({ name: 'my name' }) });
+    const { message } = await res.json();
+    if (res.status === 200) {
+      console.log(message);
+    } else {
+      console.log(message);
+      // その他のエラー処理
+      //
+      //
+    }
+  };
+
+  return (
+    <div>
+      <div>Hello Next App</div>
+      <Link href="/second">次のページ</Link>
+      <div>
+        <button onClick={handleClickHello}>Fetch Hello</button>
+      </div>
+      <div>
+        <button onClick={handleClickMyApi}>Fetch My Api</button>
+      </div>
+    </div>
+  );
+}
+```
+
+オプションを削除し、GET で呼び出してみる
+
+```
+const res = await fetch('api/my-api')
+```
+
+エラーメッセージを確認
+
+<br/>
+
 <br/>
 
 # クライアントとサーバー
 
 Web Application において、クライアントは Browser を指し、サーバーはクライアントからリクエストを受け、適当なレスポンスを返すコンピュータを指す。
 
-大まかな流れとして以下となる。※インターネットを構成するプロトコル(TCP/IP や HTTP 等)については範囲ではないので言及しない
+大まかな流れとして以下となる。
 
 1. Browser（クライアント）から対象 URL にリクエスト
 2. サーバーがリクエストに応じたレスポンスを返す。
