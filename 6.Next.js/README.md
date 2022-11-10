@@ -1,10 +1,17 @@
 # Next.js
 
-**React のフレームワーク**。Web Application に求められる様々な要件が開発しやすく、パフォーマンスに優れている。ページ生成がサーバーサイドで行われるのが特徴、いわゆるサーバーサイドレンダリング。
+**React のフレームワーク**。
+
+Web Application に求められる様々な要件が備わっており、開発しやすく、パフォーマンスに優れている。ページ生成が事前にサーバーサイドで行われるのが特徴。
 
 React はライブラリのため、製品版として運用していくには、様々な設定・追加ライブラリが必要。Next.js がその部分をカバー・改良している。もちろん、Component の書き方等は、これまで学んできた React と同様。
 
 ちなみに、以下のコマンドで生成してきた React プロジェクトは、Create-React-App というフレームワークで動作していると考えてよい。
+
+```
+npx create-react-app [app-name]
+yarn create react-app [app-name]
+```
 
 フレームワークなので、多機能だが、勉強会では+Biz 製品のコードリーディングに必要な部分だけを抽出する。
 
@@ -43,9 +50,7 @@ yarn dev
 
 停止
 
-```
 Ctrl + c
-```
 
 <br/>
 
@@ -57,7 +62,7 @@ pages フォルダ配下に格納した Component(js、jsx、ts、tsx)名に準�
 
 👨🏽‍💻 ハンズオン 👨🏽‍💻
 
-これ以降のハンズオンで console ログを確認するため、React Strict Mode をオフにする
+※以降のハンズオンで console ログを確認するため、React Strict Mode をオフにする
 
 next.config.json に以下をコピー
 
@@ -88,6 +93,8 @@ export default function Home() {
 }
 ```
 
+http://localhost:3000 にアクセスし、ページが更新されていることを確認。
+
 新たな Page を追加
 
 pages 配下に second.tsx を生成し、以下の内容をコピー
@@ -104,9 +111,9 @@ const Second = () => {
 export default Second;
 ```
 
-http://localhost:3000/second にアクセスする
+http://localhost:3000/second にアクセスできることを確認。
 
-ページ遷移を確認
+ページ遷移
 
 index.tsx に以下の内容をコピー
 
@@ -140,6 +147,8 @@ const Second = () => {
 export default Second;
 ```
 
+2 ページ間で遷移できることを確認。
+
 サブフォルダを生成し、階層を増やす
 
 pages 配下に、sub-dir フォルダを追加し、その中に hello.tsx 作成し、以下の内容をコピー
@@ -152,33 +161,37 @@ const Hello = () => {
 export default Hello;
 ```
 
-http://localhost:3000/sub-dir/hello にアクセスする
+http://localhost:3000/sub-dir/hello にアクセスできることを確認。
 
 <br/>
 
 ## Pre-rendering
 
-Next.js では、UI 生成（ページ生成）の全てをクライアントサイドで行わず、事前にサーバーサイドで行う。ページロード（ユーザーが操作可能になるまでの時間）の短縮、Chaching 、SEO 対策を考慮する仕組みとなっている。
+Next.js では、UI 生成（ページ生成）の全てをクライアントサイドで行わず、事前にサーバーサイドで行う。ページロード（ユーザーが操作可能になるまでの時間）の短縮、キャッシング 、SEO 対策を考慮する仕組みとなっている。
 
 Pre-rendering には、以下の 2 種類がある。**いつ UI 生成が行われるのか**がポイント。
 
 - Static Generation(SG)
 
-  ビルド時にページ生成を行う。基本的には、この方法をメインとする。
+  ビルド時にページ生成を行う。基本的には、この方法が推奨されている。
 
-  コードレベルでは、ページコンポーネントのみが export されている or getStaticProps と getStaticPaths が export されているページは、SG で生成されるページとなる。
+  < 実現方法 >
+
+  ページコンポーネントのみが export されている or getStaticProps と getStaticPaths が export されているページは、SG で生成されるページとなる。
 
   ※+Biz で該当箇所が無いため、本勉強会では getStaticProps と getStaticPaths については扱わない。
 
 - Server-side Rendering(SSR)
 
-  クライアントからのリクエストごとにページ生成を行う。リクエスト内容に応じたページ生成が必要な場合に利用する。
+  クライアントからのリクエストに応じたページ生成を行う。リクエスト情報を利用した動的なページ生成やデータ取得が必要な場合に利用する。
 
   +Biz では、Neo 側の初期設定情報の読み取りや、セッションチェックをリクエストごとに行うために全ページが SSR となっている。
 
-  コードレベルでは、getServerSideProps が export されているページは、SSR を行うページとなる。
+  < 実現方法 >
 
-※yarn dev で起動する場合は、常に SSR でページ生成が行われている。
+  getServerSideProps ファンクション が export されているページは、SSR を行うページとなる。
+
+※yarn dev で起動する場合は、常に全ページ SSR でページ生成が行われている。
 
 <br/>
 
@@ -206,14 +219,13 @@ second.tsx を SSR で生成
 
 以下のように、getServerSideProps を設定する
 
-ログも設定する
-
 ```
 import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 
-const Second = () => {
+const Second = ({ data }: { data: any }) => {
   console.log('second.tsx');
+  console.log(`SSR Content ${data}`);
   return (
     <div>
       <div>Second Page</div>
@@ -221,45 +233,49 @@ const Second = () => {
     </div>
   );
 };
-
 export default Second;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   console.log('getServerSideProps');
-  return { props: {} };
+
+  // リクエスト情報を利用した何等かの処理
+
+  // ハンズオンなので、リクエストヘッダーをそのままページに渡す
+  return { props: { data: context.req.headers } };
 };
 ```
 
-以下のコマンドで、Production 用起動を行う
+前述したように開発起動は全て SSR になってしまうため、以下のコマンドで、Production 用起動を行う
 
 ```
-yarn build
-yarn start
+yarn build && yarn start
 ```
 
 http://localhost:3000 で、リロードを行う
 
-index.tsx というログが Browser の Console に出力されていることが確認できる
+"index.tsx" というログが Browser の Console にのみ出力されていることが確認できる
 
 これは SG でビルド時に生成済みのページが Browser にロードされ、Broser でのみログ出力が行われるからである
 
 http://localhost:3000/second でリロードを行う
 
-second.tsx というログが Browser の Console と VSCode のターミナルタブ（Node） に、getServerSideProps というログが VSCode のターミナルタブに出力されていることが確認できる
+1. "second.tsx"ログが、Browser の Console と VSCode のターミナルタブ（Node）に出力される。
+2. "user-agent"ログが、Browser の Console と VSCode のターミナルタブ（Node）に出力される。
+3. "getServerSideProps"が VSCode のターミナルタブ（Node）にのみ出力される。
 
-これは SSR でリクエスト時にページ生成が行われるため、サーバーサイド（Node）と、ページ生成後に Browser にロードされ、ログ出力が行われるからである
+これは SSR でリクエスト時にページ生成が行われるため、サーバーサイド（Node）と、ページ生成後に Browser にロードされ、クライアントサイドでもログ出力が行われるからである。getServerSideProps はサーバーサイドにのみログが出力される。
 
 <br/>
 
 ## Api Route
 
-pages フォルダ配下に Web API を簡単に生成することができ、これらはサーバーサイドに配置される。
+pages フォルダ配下に Web API を簡単に生成することができる。これらはサーバーサイドに配置される。
 
 <br/>
 
 👨🏽‍💻 ハンズオン 👨🏽‍💻
 
-サンプル生成済みの/api/hello をコールしてみる
+テンプレートにて生成済みの/api/hello をコールしてみる
 
 index.tsx に Fetch 処理を追加
 
@@ -378,9 +394,10 @@ Nextjs は、クライアントとサーバーサイドのどちらの処理も�
 
 ## Debug
 
+<br/>
 👨🏽‍💻 ハンズオン 👨🏽‍💻
 
-基本的な Config は設定済み。
+基本的な Config は.vscode/settings.json に設定済み。
 
 1. クライアントサイド Debug
 
