@@ -1,9 +1,13 @@
 import Link from 'next/link';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-const Second = ({ data }: { data: any }) => {
+type SsrProps = {
+  userAgent: string | undefined;
+};
+
+const Second = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   console.log('second.tsx');
-  console.log('SSR Content', data);
+  console.log('SSR Content', data.userAgent);
   return (
     <div>
       <div>Second Page</div>
@@ -13,11 +17,11 @@ const Second = ({ data }: { data: any }) => {
 };
 export default Second;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps<{ data: SsrProps }> = async (context) => {
   console.log('getServerSideProps');
 
   // リクエスト情報を利用した何等かの処理を行う
 
   // 今回はハンズオンなので、リクエストヘッダーのuser-agentをそのままページに渡す
-  return { props: { data: context.req.headers['user-agent'] } };
+  return { props: { data: { userAgent: context.req.headers['user-agent'] } } };
 };

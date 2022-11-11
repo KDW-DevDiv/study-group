@@ -81,13 +81,13 @@ TypeScript => JavaScript ファイルへ
 
 <br/>
 
-## 6. Next.js(create-nextapp, Structure) 🛠️ 編集中 🛠️
+## 6. Next.js(create next-app, Pages, Debug)
 
 ### ■ Next.js Framework
 
 ### ■ create-nextapp
 
-PJ を生成と Debug 方法
+PJ 生成
 
 ### ■ ページ
 
@@ -97,43 +97,47 @@ Routing と Prerendering
 
 Frontend API
 
-<br/>
+### ■ Debug
 
-## 7. Next.js(Prerendering) 🛠️ 編集中 🛠️
-
-### ■ Prerendering
-
-SSR、SSG、ISR
-
-### ■ Client サイド、Server サイド
+クライアントとサーバー
 
 <br/>
 
-## 8. Next.js(Practice) 🛠️ 編集中 🛠️
-
-### ■ API コール
-
-Client API コール、Server が結果を返す、その結果を UI に反映
-
-<br/>
-
-## 9. Next.js(Practice) 🛠️ 編集中 🛠️
+## 7. +Biz 日報(index.tsx) 🛠️ 編集中 🛠️
 
 ### ■ SSR
 
-/Error が Route に入ったときに 404 ページを表示
+セッションチェック(iron-session)
+
+Redirect
+
+### ■ Page
+
+データ保持(react-hook-form)
+
+テナント情報取得(useSWR)
+
+各イベント
+
+useEffect
 
 <br/>
 
-## 10. +Biz 🛠️ 編集中 🛠️
+## 8. +Biz 日報(menu.tsx) 🛠️ 編集中 🛠️
 
-### ■ Menu ページ
+### ■
 
-説明
+<br/>
 
-### ■ Search ページ
+## 9. +Biz 日報(nipo-search.tsx) 🛠️ 編集中 🛠️
 
-説明
+### ■
+
+<br/>
+
+## 10. +Biz 日報(nipo-register.tsx) 🛠️ 編集中 🛠️
+
+### ■
 
 <br/>
 
