@@ -103,7 +103,7 @@ Frontend API
 
 <br/>
 
-## 7. +Biz 日報(index.tsx) 🛠️ 編集中 🛠️
+## 7. +Biz 日報(index.tsx)
 
 ### ■ SSR
 
@@ -143,10 +143,7 @@ useEffect
 
 ## 11. +Biz 🛠️ 編集中 🛠️
 
-### ■ Authenticate と Authorization
-
-Cognito 認証とチェック\
-Iron-Session とチェック
+### ■ Auth
 
 ### ■ Security
 
