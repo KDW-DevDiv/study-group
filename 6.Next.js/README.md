@@ -39,12 +39,14 @@ mkdir work
 Next.js プロジェクトを生成
 
 ```
+cd work
 yarn create next-app --typescript [app name]
 ```
 
 起動
 
 ```
+cd [app name]
 yarn dev
 ```
 
