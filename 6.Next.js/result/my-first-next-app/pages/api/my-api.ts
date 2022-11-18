@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-type Data = {
+export type MyApiData = {
   message: string;
 };
 
-const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<MyApiData>) => {
   if (req.method === 'POST') {
     const body = JSON.parse(req.body);
     res.status(200).json({ message: body.name });

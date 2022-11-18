@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { MyApiData } from './api/my-api';
 
 export default function Home() {
   // console.log('index.tsx');
@@ -11,7 +12,7 @@ export default function Home() {
 
   const handleClickMyApi = async () => {
     const res = await fetch('api/my-api', { method: 'POST', body: JSON.stringify({ name: 'my name' }) });
-    const { message } = await res.json();
+    const { message }: MyApiData = await res.json();
     if (res.status === 200) {
       console.log(message);
     } else {

@@ -13,7 +13,7 @@ npx create-react-app [app-name]
 yarn create react-app [app-name]
 ```
 
-フレームワークなので、多機能だが、勉強会では+Biz 製品のコードリーディングに必要な部分だけを抽出する。
+フレームワークなので、多機能だが、勉強会では+Biz 製品のコードリーディングのメインとなる部分をピックアップする。
 
 <br/>
 
@@ -58,7 +58,9 @@ Ctrl + c
 
 ## Pages
 
-pages フォルダ配下に格納した Component(js、jsx、ts、tsx)名に準拠して、Routing が行われ、直観的に分かりやすい仕組みとなっている。ちなみに、\_app.tsx は page が初期化される際に必ず通る Component で、各ページ共通のレイアウトを入れる等の共通処理を記載できる。
+pages フォルダ配下に格納した Component(js、jsx、ts、tsx)名に準拠して、Routing が行われ、直観的に分かりやすい仕組みとなっている。
+
+ちなみに、\_app.tsx は page が初期化される際に必ず通る Component で、各ページ共通のレイアウトを入れる等の共通処理を記載できる。
 
 <br/>
 
@@ -149,7 +151,7 @@ const Second = () => {
 export default Second;
 ```
 
-2 ページ間で遷移できることを確認。
+ページ間で遷移できることを確認。
 
 サブフォルダを生成し、階層を増やす
 
@@ -171,11 +173,13 @@ http://localhost:3000/sub-dir/hello にアクセスできることを確認。
 
 Next.js では、UI 生成（ページ生成）の全てをクライアントサイドで行わず、事前にサーバーサイドで行う。ページロード（ユーザーが操作可能になるまでの時間）の短縮、キャッシング 、SEO 対策を考慮する仕組みとなっている。
 
-Pre-rendering には、以下の 2 種類がある。**いつ UI 生成が行われるのか**がポイント。
+ちなみに Create React App で生成した Project は、クライアントサイドレンダリングとなる。（Browser の Javascript を OFF にすると違いが分かりやすい。）
+
+Pre-rendering には、以下の 2 種類がある。**いつページ生成が行われるのか**がポイント。
 
 - Static Generation(SG)
 
-  ビルド時にページ生成を行う。基本的には、この方法が推奨されている。
+  ビルド時にページ生成を行う。基本的にはこの方法が推奨されている。
 
   < 実現方法 >
 
@@ -275,7 +279,7 @@ http://localhost:3000/second でリロードを行う
 
 ## Api Route
 
-pages フォルダ配下に Web API を簡単に生成することができる。これらはサーバーサイドに配置される。
+pages/api フォルダ配下に Web API を簡単に生成することができる。これらはサーバーサイドに配置される。
 
 <br/>
 
@@ -311,16 +315,18 @@ export default function Home() {
 
 Fetch Hello をクリックし、ログを確認
 
+実際に WebApi を作成する
+
 pages/api/my-api.ts を生成
 
 ```
 import { NextApiRequest, NextApiResponse } from 'next';
 
-type Data = {
+export type MyApiData = {
   message: string;
 };
 
-const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<MyApiData>) => {
   if (req.method === 'POST') {
     const body = JSON.parse(req.body);
     res.status(200).json({ message: body.name });
@@ -336,6 +342,7 @@ index.tsx から生成した API をコール
 
 ```
 import Link from 'next/link';
+import type { MyApiData } from './api/my-api';
 
 export default function Home() {
   // console.log('index.tsx');
@@ -348,7 +355,7 @@ export default function Home() {
 
   const handleClickMyApi = async () => {
     const res = await fetch('api/my-api', { method: 'POST', body: JSON.stringify({ name: 'my name' }) });
-    const { message } = await res.json();
+    const { message }: MyApiData = await res.json();
     if (res.status === 200) {
       console.log(message);
     } else {
@@ -401,6 +408,7 @@ Nextjs は、クライアントとサーバーサイドのどちらの処理も�
 ## Debug
 
 <br/>
+
 👨🏽‍💻 ハンズオン 👨🏽‍💻
 
 基本的な Config は.vscode/settings.json に設定済み。
