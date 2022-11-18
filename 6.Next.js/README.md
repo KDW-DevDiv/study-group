@@ -167,6 +167,10 @@ export default Hello;
 
 http://localhost:3000/sub-dir/hello にアクセスできることを確認。
 
+停止する
+
+Ctrl + c
+
 <br/>
 
 ## Pre-rendering
@@ -275,6 +279,10 @@ http://localhost:3000/second でリロードを行う
 
 これは SSR でリクエスト時にページ生成が行われるため、サーバーサイド（Node）と、ページ生成後に Browser にロードされ、クライアントサイドでもログ出力が行われるからである。getServerSideProps はサーバーサイドにのみログが出力される。
 
+停止する
+
+Ctrl + c
+
 <br/>
 
 ## Api Route
@@ -312,6 +320,8 @@ export default function Home() {
   );
 }
 ```
+
+yarn dev で起動
 
 Fetch Hello をクリックし、ログを確認
 
@@ -389,7 +399,9 @@ const res = await fetch('api/my-api')
 
 エラーメッセージを確認
 
-<br/>
+停止する
+
+Ctrl + c
 
 <br/>
 
