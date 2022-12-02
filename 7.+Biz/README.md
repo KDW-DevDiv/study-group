@@ -38,7 +38,7 @@
 
 - セッションチェック
 
-  iron-session で保存した Cookie 情報（接続情報）が正常かどうかチェックする。iron-session は指定した Secret Key で情報を暗号化し Cookie に保存してくれるライブラリ。
+  iron-session で保存した Cookie 情報（認可情報）が正常かどうかチェックする。iron-session は指定した Secret Key で情報を暗号化し Cookie に保存してくれるライブラリ。
 
   nipo_cloud_profile という cookie が存在しない場合、改ざん・なりますましの場合、また有効期限が切れている場合に異常とみなされ、False が返される。
 
@@ -53,7 +53,7 @@
   },
   ```
 
-## Page
+## Component
 
 - UI 部の確認
 
