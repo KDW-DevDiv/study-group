@@ -123,15 +123,11 @@ useEffect
 
 <br/>
 
-## 8. +Biz 日報(menu.tsx) 🛠️ 編集中 🛠️
-
-### ■
+## 8. +Biz 日報(menu.tsx)
 
 <br/>
 
-## 9. +Biz 日報(nipo-search.tsx) 🛠️ 編集中 🛠️
-
-### ■
+## 9. +Biz 日報(nipo-search.tsx)
 
 <br/>
 
