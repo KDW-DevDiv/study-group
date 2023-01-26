@@ -1,0 +1,15 @@
+.Container {
+  display: flex;
+  justify-content: center;
+}
+
+.Container div{
+  display: block;
+}
+
+table, th, td {
+  border: 1px solid;
+}
+input {
+  border:0.5px solid
+}
