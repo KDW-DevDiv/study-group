@@ -1,7 +1,8 @@
 import './App.css';
 import { useAppDispatch } from './app/hooks';
-import Header from './components/header';
+import CodeFilter from './components/code-filter';
 import ItemList from './components/item-list';
+import NameFilter from './components/name-filter';
 import { resultFiltered } from './features/search-item-slice';
 
 export type Data = {
@@ -22,7 +23,8 @@ function App() {
   return (
     <div className="Container">
       <div>
-        <Header />
+        <CodeFilter />
+        <NameFilter />
         <br />
         <button onClick={onClick}>検索</button>
         <br />
