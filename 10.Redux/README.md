@@ -323,7 +323,7 @@ cd [my-redux-app]
 # Packageインストール
 yarn add @reduxjs/toolkit react-redux
 
-mkdir src/feature
+mkdir src/features
 mkdir src/app
 mkdir src/components
 ```
