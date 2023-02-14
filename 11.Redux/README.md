@@ -124,8 +124,15 @@ Redux には、一定のコーディングルールが求められ、それら�
 Project 準備
 
 ```
-# 既にベースプロジェクトは準備してある
-cd 11.Redux/handson/my-redux-app
+cd 11.Redux
+mkdir work
+cd work
+
+# 以下のフォルダをwork配下にコピー
+# 11.Redux/handson/my-redux-app
+cp -r ../handson/my-redux-app ./
+
+cd my-redux-app
 yarn
 
 # 起動するか確認

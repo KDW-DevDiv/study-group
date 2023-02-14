@@ -14,6 +14,8 @@ const ItemList = () => {
           <th>ID</th>
           <th>コード</th>
           <th>名称</th>
+          <th>備考</th>
+          <th>有効</th>
         </tr>
       </thead>
       <tbody>
