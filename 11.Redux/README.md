@@ -171,9 +171,9 @@ export const fetchItems = createAsyncThunk<
   const filter = getState().searchItem.filter;
   const mockData = {
     1: { code: 100, name: 'test1', remark: '', isValid: true },
-    2: { code: 101, name: 'test11', remark: '', isValid: true },
+    2: { code: 101, name: 'test11', remark: '', isValid: false },
     3: { code: 200, name: 'test2', remark: '', isValid: true },
-    4: { code: 201, name: 'test22', remark: '', isValid: true },
+    4: { code: 201, name: 'test22', remark: '', isValid: false },
     5: { code: 300, name: 'test3', remark: '', isValid: true },
   };
   const filtered = Object.entries(mockData).filter(([_id, item]) => {
@@ -265,3 +265,25 @@ yarn start
 <br/>
 
 ## 実践
+
+「有効」項目について検索条件を追加し、検索処理に反映させる。
+
+<br/>
+
+👨🏽‍💻 ハンズオン 👨🏽‍💻
+
+1. 「有効データのみ」というチェックボックス Component を作成し、App.tsx に追加。
+
+   この時点では、Redux に関連する内容はダミーで OK
+
+2. search-item-slice.ts に他フィルターと同様に情報を追加していく
+
+3. 1 で作成した Component に 2 で設定した情報を追加していく
+
+4. 処理を確認
+
+最終的な UI は以下。
+
+![](./valid-filter.gif)
+
+<br/>

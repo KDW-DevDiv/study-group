@@ -15,9 +15,9 @@ const initialState: SearchItem = {
   },
   items: {
     1: { code: 100, name: 'test1', remark: '', isValid: true },
-    2: { code: 101, name: 'test11', remark: '', isValid: true },
+    2: { code: 101, name: 'test11', remark: '', isValid: false },
     3: { code: 200, name: 'test2', remark: '', isValid: true },
-    4: { code: 201, name: 'test22', remark: '', isValid: true },
+    4: { code: 201, name: 'test22', remark: '', isValid: false },
     5: { code: 300, name: 'test3', remark: '', isValid: true },
   },
 };

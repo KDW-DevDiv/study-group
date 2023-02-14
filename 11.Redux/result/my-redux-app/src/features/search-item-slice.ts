@@ -5,6 +5,7 @@ type SearchItem = {
   filter: {
     code: number | null;
     name: string;
+    isValid: boolean;
   };
   items: { [id: number]: { code: number; name: string; remark: string; isValid: boolean } };
 };
@@ -13,6 +14,7 @@ const initialState: SearchItem = {
   filter: {
     code: null,
     name: '',
+    isValid: false,
   },
   items: {},
 };
@@ -27,9 +29,9 @@ export const fetchItems = createAsyncThunk<
   const filter = getState().searchItem.filter;
   const mockData = {
     1: { code: 100, name: 'test1', remark: '', isValid: true },
-    2: { code: 101, name: 'test11', remark: '', isValid: true },
+    2: { code: 101, name: 'test11', remark: '', isValid: false },
     3: { code: 200, name: 'test2', remark: '', isValid: true },
-    4: { code: 201, name: 'test22', remark: '', isValid: true },
+    4: { code: 201, name: 'test22', remark: '', isValid: false },
     5: { code: 300, name: 'test3', remark: '', isValid: true },
   };
   const filtered = Object.entries(mockData).filter(([_id, item]) => {
@@ -37,6 +39,9 @@ export const fetchItems = createAsyncThunk<
       return false;
     }
     if (filter.name && !item.name.includes(filter.name)) {
+      return false;
+    }
+    if (filter.isValid && !item.isValid) {
       return false;
     }
     return true;
@@ -57,6 +62,9 @@ const searchItemSlice = createSlice({
     nameFilterModified(state, action: PayloadAction<string>) {
       state.filter.name = action.payload;
     },
+    validFilterModified(state, action: PayloadAction<boolean>) {
+      state.filter.isValid = action.payload;
+    },
     itemRemarkModified(state, action: PayloadAction<{ id: number; value: string }>) {
       state.items[action.payload.id].remark = action.payload.value;
     },
@@ -71,7 +79,7 @@ const searchItemSlice = createSlice({
   },
 });
 
-export const { codeFilterModified, nameFilterModified, itemRemarkModified, itemIsValidToggled } =
+export const { codeFilterModified, nameFilterModified, validFilterModified, itemRemarkModified, itemIsValidToggled } =
   searchItemSlice.actions;
 
 export default searchItemSlice.reducer;

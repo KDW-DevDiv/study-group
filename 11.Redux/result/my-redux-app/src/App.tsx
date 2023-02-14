@@ -3,6 +3,7 @@ import { useAppDispatch } from './app/hooks';
 import CodeFilter from './components/code-filter';
 import ItemList from './components/item-list';
 import NameFilter from './components/name-filter';
+import ValidFilter from './components/valid-filter';
 import { fetchItems } from './features/search-item-slice';
 
 export type Data = {
@@ -25,6 +26,7 @@ function App() {
       <div>
         <CodeFilter />
         <NameFilter />
+        <ValidFilter />
         <br />
         <button onClick={onClick}>検索</button>
         <br />
