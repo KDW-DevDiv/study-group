@@ -161,6 +161,14 @@ API コールを行う Action を追加
 features/search-item-slice.ts
 
 ```
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { store } from '../app/store';
+
+type SearchItem,,,
+
+const initialState: SearchItem = {,,,,
+
+
 // 非同期処理
 export const fetchItems = createAsyncThunk<
   Pick<SearchItem, 'items'>,
@@ -237,13 +245,28 @@ ItemList の初期表示を実装
 
 ※eslint のエラーは、単純化のため無視する
 
-item-list.tsx
+components/item-list.tsx
 
 ```
-useEffect(() => {
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { shallowEqual } from 'react-redux';
+import Item from './item';
+import { useEffect } from 'react';
+import { fetchItems } from '../features/search-item-slice';
+
+const ItemList = () => {
+  const dispatch = useAppDispatch();
+  const items = useAppSelector((state) => Object.keys(state.searchItem.items), shallowEqual);
+
+  console.log('item-list.tsx');
+
+  useEffect(() => {
     dispatch(fetchItems());
     // eslint-disable-next-line
-}, []);
+  }, []);
+
+  ,,,,
+  ,,,,
 ```
 
 検索処理の Action を変更
@@ -251,9 +274,22 @@ useEffect(() => {
 App.tsx
 
 ```
-const onClick = () => {
-  dispatch(fetchItems());
-};
+import './App.css';
+import { useAppDispatch } from './app/hooks';
+import CodeFilter from './components/code-filter';
+import ItemList from './components/item-list';
+import NameFilter from './components/name-filter';
+import { fetchItems } from './features/search-item-slice';
+
+function App() {
+  const dispatch = useAppDispatch();
+
+  const onClick = () => {
+    dispatch(fetchItems());
+  };
+
+  ,,,,
+  ,,,,
 ```
 
 Project を実行し、処理を確認
@@ -285,5 +321,3 @@ yarn start
 最終的な UI は以下。
 
 ![](./valid-filter.gif)
-
-<br/>
