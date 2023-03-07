@@ -131,26 +131,12 @@ useEffect
 
 <br/>
 
-## 10. +Biz 日報(nipo-register.tsx) 🛠️ 編集中 🛠️
-
-### ■
+## 10. Redux
 
 <br/>
 
-## 11. +Biz 🛠️ 編集中 🛠️
+## 11. Redux
 
-### ■ Auth
+<br/>
 
-### ■ Security
-
-CSP、Escaping
-
-## X. Supplement 🛠️ 編集中 🛠️
-
-### ■ Node
-
-### ■ npm
-
-### ■ vscode
-
-### ■ git
+## 12. Tailwind
