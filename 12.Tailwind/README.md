@@ -176,7 +176,7 @@ bg-red-500 や text-white が tailwind で定義された名称。
 
 ```
 # watchを追加し、継続的にビルドを行うようにする
-npx tailwindcss -i ./input.css -o ./dist/output.css --watch
+npx tailwindcss -i ./input.css -o ./dist/output.css --minify --watch
 ```
 
 上記で作成した tailwind-version.html を Browser で開くと、背景色が赤、文字色が白でスタイリングされた Tailwind CSS という文字が表示される。
@@ -201,10 +201,24 @@ npx tailwindcss -i ./input.css -o ./dist/output.css --watch
 </html>
 ```
 
-Tailwind を用いたスタイリングでは、CSS ファイルを直接編集する必要が無いため、上記で挙げた 3 点を意識する必要がない。
+**Tailwind を用いたスタイリングでは、CSS ファイルを直接編集する必要が無いため、上記で挙げた 3 点を考慮しなくてもよい。**
+
+<br/>
+
+## 生成された CSS を確認
+
+F12 で Browser のデベロッパーツールを開き、ネットワーク -> output.css -> レスポンスを確認。
+
+以下のように生成され、Browser にロードされていることが分かる。
+
+```
+.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246/var(--tw-bg-opacity))}.bg-red-500{--tw-bg-opacity:1;background-color:rgb(239 68 68/var(--tw-bg-opacity))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity))}.text-yellow-300{--tw-text-opacity:1;color:rgb(253 224 71/var(--tw-text-opacity))}
+```
 
 <br/>
 
 ## 仕組み
 
-定義された class 名に基づいて、Tailwind が CSS を自動生成してくれる。そのため、最終的な成果物は当然のごとく、html、css として、Browser 上で認識されて動作している。
+Tailwind のルールに沿った class 名を設定し、tailwind のビルド（変換）プロセスを通すことで、実際に利用する CSS を自動生成する。
+
+更に、Minification や、必要スタイルのみの記述を行うなどの、最適化も行われている。
