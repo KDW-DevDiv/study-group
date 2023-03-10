@@ -14,7 +14,7 @@ HTML に配置されたエレメントに対して、どのようなスタイリ
 
 ```
 cd 12.Tailwind
-mkdir -r work/plain
+mkdir -p work/plain
 cd work/plain
 ```
 
@@ -148,7 +148,7 @@ module.exports = {
 input.css に tailwind を読み込むように設定する。
 
 ```
-@tailwind base;
+@tailwind utilities;
 ```
 
 ここまでが事前設定。
